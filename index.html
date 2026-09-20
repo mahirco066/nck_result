@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- PDF.js لقراءة واستخراج بيانات الطلاب من ملفات PDF المرفوعة -->
+    <!-- PDF.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     
     <script>
@@ -22,14 +22,9 @@
                     fontFamily: { sans: ['Cairo', 'sans-serif'] },
                     colors: {
                         kordofan: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            200: '#bbf7d0',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
+                            50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0',
+                            500: '#22c55e', 600: '#16a34a', 700: '#15803d',
+                            800: '#166534', 900: '#14532d',
                         }
                     }
                 }
@@ -111,7 +106,7 @@
                             <input type="password" id="loginPassword" required placeholder="كلمة المرور (الافتراضية: 123456)" class="w-full text-xs p-3.5 pr-10 border border-slate-200 rounded-xl focus:ring-2 focus:ring-kordofan-600 outline-none font-bold">
                             <i class="fa-solid fa-key absolute right-3.5 top-3.5 text-slate-400 text-sm"></i>
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-1">كلمة المرور الأولية لجميع الطلاب هي: <strong class="text-kordofan-700">123456</strong> (يمكنك تغييرها بعد الدخول).</p>
+                        <p class="text-[10px] text-slate-400 mt-1">كلمة المرور الأولية للطلاب هي: <strong class="text-kordofan-700">123456</strong> (يمكنك تغييرها بعد الدخول).</p>
                     </div>
 
                     <div id="loginErrorMsg" class="hidden text-xs text-red-600 font-bold bg-red-50 p-2.5 rounded-xl border border-red-200">
@@ -138,7 +133,6 @@
 
         <!-- 2. شاشة نتيجة الطالب الخاصة (Result Screen) -->
         <section id="screen-result" class="hidden space-y-4">
-            <!-- شريط رأس بطاقة النتيجة -->
             <div class="bg-gradient-to-r from-kordofan-800 to-emerald-900 text-white rounded-2xl p-4 shadow-md relative overflow-hidden border border-emerald-600/30">
                 <div class="flex justify-between items-start">
                     <div>
@@ -160,7 +154,6 @@
                 </div>
             </div>
 
-            <!-- جدول درجات المواد والمعدلات -->
             <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
                 <div class="p-3 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
                     <h3 class="font-bold text-xs text-slate-800">تفاصيل المقررات والتقديرات</h3>
@@ -176,13 +169,10 @@
                             <th class="p-3 text-center">التقدير</th>
                         </tr>
                     </thead>
-                    <tbody id="resultCoursesBody" class="divide-y divide-slate-100">
-                        <!-- تظهر المواد هنا -->
-                    </tbody>
+                    <tbody id="resultCoursesBody" class="divide-y divide-slate-100"></tbody>
                 </table>
             </div>
 
-            <!-- أزرار الإجراءات للنتيجة -->
             <div class="grid grid-cols-2 gap-3 pt-1">
                 <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow transition">
                     <i class="fa-solid fa-print"></i>
@@ -206,7 +196,6 @@
             </div>
 
             <div class="space-y-3" id="weeklyScheduleList">
-                <!-- الأحد -->
                 <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm space-y-2">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-1.5">
                         <span class="font-extrabold text-xs text-kordofan-800 flex items-center gap-1.5">
@@ -232,7 +221,6 @@
                     </div>
                 </div>
 
-                <!-- الإثنين -->
                 <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm space-y-2">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-1.5">
                         <span class="font-extrabold text-xs text-kordofan-800 flex items-center gap-1.5">
@@ -248,23 +236,6 @@
                         <p class="text-[11px] text-slate-500 mt-0.5">د. الطيب النور | قاعة ابن الهيثم</p>
                     </div>
                 </div>
-
-                <!-- الثلاثاء -->
-                <div class="bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm space-y-2">
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-1.5">
-                        <span class="font-extrabold text-xs text-kordofan-800 flex items-center gap-1.5">
-                            <i class="fa-regular fa-calendar-days text-kordofan-600"></i> الثلاثاء
-                        </span>
-                        <span class="text-[10px] text-slate-400">عملي وتطبيقات</span>
-                    </div>
-                    <div class="bg-emerald-50/40 p-2.5 rounded-lg border border-emerald-100/70 text-xs">
-                        <div class="flex justify-between font-bold text-slate-800">
-                            <span>نظم التشغيل والبرمجة التطبيقية</span>
-                            <span class="text-kordofan-700 font-mono">11:00 - 02:00</span>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-0.5">د. عثمان البشير | المعمل الرئيسي</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -278,7 +249,6 @@
                 <span class="bg-emerald-100 text-kordofan-800 text-[10px] font-bold px-2 py-0.5 rounded-md">معتمد رسمياً</span>
             </div>
 
-            <!-- بطاقة التنبيه بالامتحان القادم -->
             <div class="bg-gradient-to-r from-kordofan-800 to-emerald-800 text-white rounded-2xl p-4 shadow-sm flex items-center justify-between border border-emerald-600/30">
                 <div>
                     <span class="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-md font-bold">الامتحان القادم</span>
@@ -288,10 +258,7 @@
                 <i class="fa-solid fa-stopwatch text-3xl opacity-90 text-emerald-200"></i>
             </div>
 
-            <!-- قائمة امتحانات الطالب حسب القسم والعام والفصل المحددين -->
-            <div class="space-y-3" id="studentExamScheduleContainer">
-                <!-- تعرض المواد هنا تلقائياً -->
-            </div>
+            <div class="space-y-3" id="studentExamScheduleContainer"></div>
         </section>
 
         <!-- 5. شاشة الملف الشخصي وتغيير كلمة السر للطالب (Profile & Settings) -->
@@ -306,7 +273,6 @@
                 </div>
             </div>
 
-            <!-- نموذج تغيير اسم المستخدم وكلمة المرور -->
             <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
                 <h3 class="font-bold text-xs text-slate-900 flex items-center gap-2 text-kordofan-700">
                     <i class="fa-solid fa-shield-halved"></i>
@@ -344,7 +310,7 @@
             </div>
         </section>
 
-        <!-- 6. بوابة إدارة الكلية / المسجل الأكاديمي (Admin Portal) -->
+        <!-- 6. لوحة تحكم المسجل الأكاديمي (Admin Portal) -->
         <section id="screen-admin" class="hidden space-y-4">
             <div class="bg-slate-900 text-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
                 <div>
@@ -357,19 +323,19 @@
             </div>
 
             <!-- تبويبات إدارة المسجل -->
-            <div class="flex gap-2 border-b border-slate-200 pb-2">
-                <button onclick="switchAdminTab('exams')" id="adminTabBtnExams" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-kordofan-700 text-white">
-                    رفع وتحديث جداول الامتحانات
+            <div class="flex gap-1.5 border-b border-slate-200 pb-2 overflow-x-auto">
+                <button onclick="switchAdminTab('exams')" id="adminTabBtnExams" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-kordofan-700 text-white whitespace-nowrap">
+                    جداول الامتحانات
                 </button>
-                <button onclick="switchAdminTab('passwords')" id="adminTabBtnPass" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">
-                    تغيير كلمات مرور الطلاب
+                <button onclick="switchAdminTab('passwords')" id="adminTabBtnPass" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 whitespace-nowrap">
+                    كلمات مرور الطلاب
                 </button>
-                <button onclick="switchAdminTab('pdf')" id="adminTabBtnPdf" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">
-                    رفع ملف النتائج PDF
+                <button onclick="switchAdminTab('pdf')" id="adminTabBtnPdf" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 whitespace-nowrap">
+                    كشف النتائج PDF
                 </button>
             </div>
 
-            <!-- تبويب 1: رفع وإضافة جداول الامتحانات لكل قسم وعام وفصل -->
+            <!-- تبويب 1: رفع وإضافة جداول الامتحانات -->
             <div id="adminTabExams" class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
                 <h3 class="font-bold text-xs text-slate-900 flex items-center gap-1.5 text-kordofan-700">
                     <i class="fa-solid fa-calendar-plus"></i>
@@ -441,7 +407,7 @@
 
                 <form onsubmit="handleAdminResetStudentPassword(event)" class="space-y-3">
                     <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">الرقم الجامعي للطالب المراد تغيير كلمة سره *</label>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">الرقم الجامعي للطالب *</label>
                         <input type="text" id="admResetStudentId" required placeholder="مثال: 1045 أو NKC/CS/2021/045" class="w-full text-xs p-2.5 border border-slate-200 rounded-lg outline-none uppercase font-bold">
                     </div>
 
@@ -465,13 +431,12 @@
                     <span>رفع ملف كشف النتيجة المجمع (PDF)</span>
                 </h3>
                 <p class="text-[11px] text-slate-500 leading-relaxed">
-                    يرفع المسجل ملف PDF يتضمن درجات كل طلاب الدفعة والقسم. سيقوم النظام أوتوماتيكياً بفهرسة الأرقام الجامعية وعرض درجات كل طالب له بمفرده عند الاستعلام.
+                    يرفع المسجل ملف PDF يتضمن درجات كل طلاب الدفعة والقسم. سيقوم النظام أوتوماتيكياً بفهرسة الأرقام وعرض درجات كل طالب له بمفرده.
                 </p>
 
                 <div class="border-2 border-dashed border-slate-200 rounded-xl p-5 text-center space-y-2 bg-slate-50 hover:bg-slate-100 transition cursor-pointer" onclick="document.getElementById('pdfInput').click()">
                     <i class="fa-solid fa-cloud-arrow-up text-3xl text-kordofan-700"></i>
                     <p class="text-xs font-bold text-slate-700">اضغط لاختيار ملف PDF لنتيجة الدفعة</p>
-                    <p class="text-[10px] text-slate-400">ملفات PDF الخاصة بالكنترول الأكاديمي</p>
                     <input type="file" id="pdfInput" accept="application/pdf" class="hidden" onchange="handlePdfUpload(event)">
                 </div>
 
@@ -505,7 +470,7 @@
     </nav>
 </div>
 
-<!-- نافذة تسجيل دخول المسجل الأكاديمي (Modal مخصصة وأنيقة) -->
+<!-- نافذة تسجيل دخول المسجل الأكاديمي (Modal) -->
 <div id="adminLoginModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-4 shadow-2xl border border-emerald-100">
         <div class="flex justify-between items-center border-b border-slate-100 pb-2.5">
@@ -544,7 +509,6 @@
 </div>
 
 <script>
-    // 1. قاعدة بيانات الطلاب والنتائج وكلمات المرور
     let universityMasterResults = JSON.parse(localStorage.getItem('kordofan_master_results')) || [
         {
             id: "1045",
@@ -600,7 +564,6 @@
         }
     ];
 
-    // 2. جداول الامتحانات المقسمة حسب القسم والعام والفصل
     let universityExamSchedules = JSON.parse(localStorage.getItem('kordofan_exam_schedules')) || [
         {
             id: 1,
@@ -646,7 +609,6 @@
 
     let currentLoggedInStudent = null;
 
-    // تهيئة حالة التطبيق عند الفتح
     window.addEventListener('DOMContentLoaded', () => {
         const savedSession = localStorage.getItem('kordofan_current_student');
         if (savedSession) {
@@ -660,7 +622,6 @@
         setStudentLoggedOut();
     });
 
-    // تسجيل دخول الطالب بالرقم الجامعي وكلمة المرور
     function handleStudentLogin(e) {
         e.preventDefault();
         const inputId = document.getElementById('loginStudentId').value.trim().toUpperCase();
@@ -709,7 +670,6 @@
         switchStudentTab('login');
     }
 
-    // التبديل بين شاشات التطبيق
     function switchStudentTab(tabId) {
         const tabs = ['login', 'result', 'schedule', 'exams', 'profile', 'admin'];
         tabs.forEach(t => {
@@ -732,7 +692,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // عرض نتيجة الطالب الفردية
     function displaySingleStudentResult(student) {
         document.getElementById('resStudentName').innerText = student.studentName;
         document.getElementById('resStudentId').innerText = `الرقم الجامعي: ${student.fullNameId}`;
@@ -776,7 +735,6 @@
         `).join('');
     }
 
-    // عرض جدول الامتحانات المخصص لقسم وعام وفصل الطالب
     function displayStudentExams(student) {
         const container = document.getElementById('studentExamScheduleContainer');
         const deptNames = { 'cs': 'علوم حاسوب', 'med': 'تمريض', 'econ': 'اقتصاد', 'edu': 'تربية' };
@@ -798,7 +756,6 @@
             return;
         }
 
-        // تحديد أول امتحان
         document.getElementById('nextExamCourseName').innerText = matchingExams[0].courseName;
         document.getElementById('nextExamTime').innerText = `${matchingExams[0].examDate} (${matchingExams[0].examTime})`;
 
@@ -814,7 +771,6 @@
         `).join('');
     }
 
-    // تحميل وعرض بيانات ملف الطالب
     function loadProfileData(student) {
         document.getElementById('profStudentName').innerText = student.studentName;
         document.getElementById('profStudentId').innerText = student.fullNameId;
@@ -825,7 +781,6 @@
         document.getElementById('profMsg').classList.add('hidden');
     }
 
-    // قيام الطالب بتغيير اسمه وكلمة المرور الخاصة به
     function handleStudentChangeCredentials(e) {
         e.preventDefault();
         if (!currentLoggedInStudent) return;
@@ -848,7 +803,6 @@
             return;
         }
 
-        // حفظ التعديلات في الطالب
         currentLoggedInStudent.studentName = newName;
         currentLoggedInStudent.password = newPass;
 
@@ -859,8 +813,6 @@
         msg.className = "text-xs font-bold p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 block";
         msg.innerText = "تم حفظ اسم المستخدم وكلمة المرور الجديدة بنجاح!";
     }
-
-    // ---------------- إدارة المسجل الأكاديمي ----------------
 
     function toggleAdminPanel() {
         const adminScreen = document.getElementById('screen-admin');
@@ -901,15 +853,14 @@
             const btn = document.getElementById(`adminTabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
             if (t === tab) {
                 el.classList.remove('hidden');
-                btn.className = "text-xs font-bold px-3 py-1.5 rounded-lg bg-kordofan-700 text-white";
+                btn.className = "text-xs font-bold px-3 py-1.5 rounded-lg bg-kordofan-700 text-white whitespace-nowrap";
             } else {
                 el.classList.add('hidden');
-                btn.className = "text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200";
+                btn.className = "text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 whitespace-nowrap";
             }
         });
     }
 
-    // المسجل يضيف / يرفع مادة لجدول امتحانات قسم وعام وفصل محدد
     function handleSaveExamItem(e) {
         e.preventDefault();
         const newExam = {
@@ -929,7 +880,6 @@
         document.getElementById('admExamCourse').value = '';
     }
 
-    // المسجل يعيد تعيين كلمة المرور لأي طالب
     function handleAdminResetStudentPassword(e) {
         e.preventDefault();
         const searchId = document.getElementById('admResetStudentId').value.trim().toUpperCase();
@@ -954,7 +904,6 @@
         document.getElementById('admResetNewPass').value = '';
     }
 
-    // قراءة ملف PDF لنتائج الكلية واستخراج بيانات الطلاب
     async function handlePdfUpload(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -982,7 +931,6 @@
         localStorage.setItem('kordofan_master_results', JSON.stringify(universityMasterResults));
     }
 
-    // مشاركة النتيجة عبر واتساب
     function shareResultCard() {
         if (!currentLoggedInStudent) return;
         const text = encodeURIComponent(
